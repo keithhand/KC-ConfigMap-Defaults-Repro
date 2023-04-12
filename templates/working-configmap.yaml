@@ -1,0 +1,21 @@
+{{- if .Values.kubecostProductConfigs }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pricing-configs-working
+data:
+  {{- if .Values.kubecostProductConfigs.defaultModelPricing }}
+  {{- if kindIs "float64" .Values.kubecostProductConfigs.defaultModelPricing.CPU }}
+  CPU: "{{ .Values.kubecostProductConfigs.defaultModelPricing.CPU | toString }}"
+  {{- end -}}
+  {{- if kindIs "float64" .Values.kubecostProductConfigs.defaultModelPricing.RAM }}
+  RAM: "{{ .Values.kubecostProductConfigs.defaultModelPricing.RAM | toString }}"
+  {{- end -}}
+  {{- if kindIs "float64" .Values.kubecostProductConfigs.defaultModelPricing.GPU }}
+  GPU: "{{ .Values.kubecostProductConfigs.defaultModelPricing.GPU | toString }}"
+  {{- end -}}
+  {{- end -}}
+  {{- if kindIs "string" .Values.kubecostProductConfigs.sharedNamespaces }}
+  sharedNamespaces: "{{ .Values.kubecostProductConfigs.sharedNamespaces }}"
+  {{- end -}}
+{{- end -}}

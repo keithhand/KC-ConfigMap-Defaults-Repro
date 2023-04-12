@@ -1,0 +1,7 @@
+kubecostProductConfigs:
+  sharedNamespaces: "" # this should be set to ""
+  # clusterName: "" # this should be set to null
+  defaultModelPricing:
+    CPU: 90 # this should set to 90
+    # RAM: 0.0 # this should set to null
+    GPU: 0.0 # this should set to 0
